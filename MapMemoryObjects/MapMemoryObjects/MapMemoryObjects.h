@@ -305,5 +305,55 @@ public:
     }
 
 
+    HANDLE FindRegistryKeyHandle(PSYSTEM_HANDLE_INFORMATION memoryHandlers, const wstring& registryName) {
+        NtDuplicateObject_t pNtDuplicateObject = (NtDuplicateObject_t)GetProcAddress(GetModuleHandle(L"ntdll.dll"), "NtDuplicateObject");
+        NtQueryObject_t pNtQueryObject = (NtQueryObject_t)GetProcAddress(GetModuleHandle(L"ntdll.dll"), "NtQueryObject");
+
+        POBJECT_TYPE_INFORMATION objectTypeInfo;
+        NTSTATUS status;
+        HANDLE hProcess;
+        HANDLE duplicatedHandle = NULL;
+
+        for (ULONG i = 0; i < memoryHandlers->NumberOfHandles; i++) {
+            SYSTEM_HANDLE_TABLE_ENTRY_INFO handle = memoryHandlers->Handles[i];
+            if (!(hProcess = OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, handle.UniqueProcessId))) {
+                continue;
+            }
+
+            status = pNtDuplicateObject(hProcess, (void*)handle.HandleValue, GetCurrentProcess(), &duplicatedHandle, 0, 0, DUPLICATE_SAME_ACCESS);
+            if (!NT_SUCCESS(status)) {
+                CloseHandle(hProcess);
+                continue;
+            }
+
+            objectTypeInfo = (POBJECT_TYPE_INFORMATION)malloc(0x2000);
+            ULONG returnLength;
+            status = pNtQueryObject(duplicatedHandle, ObjectTypeInformation, objectTypeInfo, 0x1000, &returnLength);
+            if (!NT_SUCCESS(status)) {
+                CloseHandle(hProcess);
+                continue;
+            }
+
+            // Compare with registryName
+            if (wcscmp(objectTypeInfo->Name.Buffer, L"Key") == 0) {
+                // Now fetch the name of the key
+                status = pNtQueryObject(duplicatedHandle, ObjectNameInformation, objectTypeInfo, 0x1000, &returnLength);
+                if (NT_SUCCESS(status)) {
+                    wstring objectName(objectTypeInfo->Name.Buffer, objectTypeInfo->Name.Length / sizeof(WCHAR));
+                    if (objectName == registryName) {
+                        CloseHandle(hProcess);
+                        return duplicatedHandle;
+                    }
+                }
+            }
+
+            CloseHandle(hProcess);
+        }
+
+        return nullptr; // Return nullptr if not found
+    }
+
+
+
 };
 
