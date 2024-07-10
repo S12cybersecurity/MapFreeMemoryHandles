@@ -1,0 +1,19 @@
+﻿  MapMemoryObjects.cpp
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(65,18): warning C4101: 'status': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(67,15): warning C4101: 'objectNameInfo': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(69,24): warning C4101: 'objectName': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(115,18): warning C4101: 'status': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(117,15): warning C4101: 'objectNameInfo': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(119,24): warning C4101: 'objectName': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(165,18): warning C4101: 'status': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(167,15): warning C4101: 'objectNameInfo': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(169,24): warning C4101: 'objectName': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(215,18): warning C4101: 'status': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(217,15): warning C4101: 'objectNameInfo': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(219,24): warning C4101: 'objectName': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(265,18): warning C4101: 'status': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(267,15): warning C4101: 'objectNameInfo': unreferenced local variable
+S:\MalwareDeveloped\MapMemoryObjects\MapMemoryObjects\MapMemoryObjects.h(269,24): warning C4101: 'objectName': unreferenced local variable
+  MapMemoryObjects.vcxproj -> S:\MalwareDeveloped\MapMemoryObjects\x64\Debug\MapMemoryObjects.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
