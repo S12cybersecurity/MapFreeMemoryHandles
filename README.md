@@ -1,4 +1,4 @@
-# MapFreeMemoryHandles
+# Map Free Memory Handles
 Find all type of handles free in Windows Memory
 
 This technique basically map all the memory searching Handles or Objects created and used by others processes but totally perfect to use in your process, but what objects you can capture?
